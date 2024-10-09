@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1>1.Check whether a given year is a leap year in the Gregorian calendar</h1>
+ <input type="number" placeholder="Enter Year" id="gc">
+ <button type="button" onclick="checkYear()">Check</button>
+ <p id="result"></p>
+ <br> <br>
+ <h1>2.Check if 1st January will be a Sunday between 2014 and 2050 </h1>
+
+ <button onclick="checkDay()" type="button" >Check</button>
+ 
+ <p id="dayResult"></p>
+ <br> <br>
+ <h1>3. A for loop that iterates from 0 to 15 </h1>
+ <button type="button" onclick="displayNum()">Display</button>
+ <p id="nums"></p>
+ <br> <br>
+ <h1>4. Check whether a passed string is a palindrome or not</h1>
+ <input type="text" id="txt" placeholder="Enter Text">
+ <button type="button" onclick="checkPalindrome()">Check</button>
+ <p id="newTxt"></p>
+    
+ 
+ <script>
+  function leapYear( year){
+ return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+
+ 
+  }
+  function checkYear(){
+   const year = parseInt(document.getElementById("gc").value) ; 
+    
+ 
+   const result = document.getElementById("result");
+   result.innerHTML = leapYear(year) ? `${year} is a leap year.` : `${year} is not a leap year.`;
+  }
+  function checkDay(){
+  
+   
+  for( let year = 2014; year <= 2050; year ++){
+   const date = new Date(year, 0, 1); 
+   if (date.getDay() === 0){
+       dayResult.innerHTML += `${year}: January 1st is a Sunday.<br>`
+   }
+   else{
+       dayResult.innerHTML += `${year}: January 1st is not a Sunday.<br>`
+   }
+  }
+
+
+  }
+  function displayNum(){
+   document.getElementById("nums").innerHTML = '';
+   for( let x = 0; x <= 15; x++){
+     if(x % 2 === 0){
+      document.getElementById("nums").innerHTML += x + ":" + "is even <br>"
+   }
+   else{
+      document.getElementById("nums").innerHTML += x + ":" + "is odd <br>"
+   }
+   }
+   
+  }
+  function checkPalindrome(){
+   const text = document.getElementById('txt').value;
+            const reversedTxt = text.split('').reverse().join(''); 
+            
+            const newTxt = document.getElementById('newTxt');
+            if (text === reversedTxt) {
+                newTxt.innerHTML = `"${text}" is a palindrome.`;
+            } 
+            else {
+                newTxt.innerHTML = `"${text}" is not a palindrome.`;
+            }
+  }
+ </script>
+ 
+
+
+</body>
+</html>
